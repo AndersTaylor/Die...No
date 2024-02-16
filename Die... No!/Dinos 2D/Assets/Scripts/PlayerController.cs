@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +10,9 @@ public class PlayerController : MonoBehaviour
 
     public float fallMultiplierFloat;
     public float lowJumpMultiplierFloat;
+    private bool isGrounded = true;
 	
     private Rigidbody2D rb;
-    private bool isGrounded;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private void Jump(float _jumpForce)
     {
         rb.AddForce(Vector2.up * _jumpForce);
+        isGrounded = false;
     }
 
     private void PlayerInputsAndMovement()
@@ -44,5 +46,11 @@ public class PlayerController : MonoBehaviour
         //AT control jump height by length of time jump button held
         if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space)) 
             rb.velocity += Vector2.up * (Physics.gravity.y * (lowJumpMultiplierFloat - 1) * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+            isGrounded = true;
     }
 }
