@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private void Update() 
     {
 		PlayerInputsAndMovement();
+        CheckIsGrounded();
     }
 
     private void Jump(float _jumpForce)
@@ -48,9 +49,13 @@ public class PlayerController : MonoBehaviour
             rb.velocity += Vector2.up * (Physics.gravity.y * (lowJumpMultiplierFloat - 1) * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private bool CheckIsGrounded()
     {
-        if (other.gameObject.CompareTag("Ground"))
-            isGrounded = true;
+        //AT Hardcoded distance down to check for ground. Will be different depending on character sprite
+        RaycastHit2D hit = Physics2D.Raycast((transform.position + Vector3.down * 1.5f), Vector2.down, 0.1f);
+        if (hit.collider != null && hit.collider.gameObject.CompareTag("Ground"))
+            return isGrounded = true;
+        
+        return isGrounded = false;
     }
 }
