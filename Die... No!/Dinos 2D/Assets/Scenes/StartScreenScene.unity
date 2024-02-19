@@ -189,8 +189,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287518625
-  m_fontColor: {r: 0.6313726, g: 0.34117648, b: 0.5568628, a: 1}
+    rgba: 4293380344
+  m_fontColor: {r: 0.9716981, g: 0.7837753, b: 0.9048596, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -325,8 +325,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287518625
-  m_fontColor: {r: 0.6313726, g: 0.34117648, b: 0.5568628, a: 1}
+    rgba: 4293380344
+  m_fontColor: {r: 0.9716981, g: 0.7837753, b: 0.9048596, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -694,8 +694,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287518625
-  m_fontColor: {r: 0.6313726, g: 0.34117648, b: 0.5568628, a: 1}
+    rgba: 4293380344
+  m_fontColor: {r: 0.9716981, g: 0.7837753, b: 0.9048596, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -774,7 +774,7 @@ GameObject:
   - component: {fileID: 1901561845}
   - component: {fileID: 1901561844}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -831,8 +831,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287518625
-  m_fontColor: {r: 0.6313726, g: 0.34117648, b: 0.5568628, a: 1}
+    rgba: 4293380344
+  m_fontColor: {r: 0.9716981, g: 0.7837753, b: 0.9048596, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
