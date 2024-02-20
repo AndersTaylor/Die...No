@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followSpeed: 8
-  deadZone: 0.25
+  deadZone: 0.05
 --- !u!1 &646354005
 GameObject:
   m_ObjectHideFlags: 0
