@@ -7,10 +7,10 @@ public class PlayerController : MonoBehaviour
 {
     public float jumpForce = 1000f;
     public float speed = 1;
+    public bool isGrounded = true;
 
     public float fallMultiplierFloat;
     public float lowJumpMultiplierFloat;
-    private bool isGrounded = true;
 	
     private Rigidbody2D rb;
 
@@ -51,10 +51,22 @@ public class PlayerController : MonoBehaviour
 
     private bool CheckIsGrounded()
     {
+        RaycastHit2D[] hits = new RaycastHit2D[2];
+        
         //AT Hardcoded distance down to check for ground. Will be different depending on character sprite
-        RaycastHit2D hit = Physics2D.Raycast((transform.position + Vector3.down * 1.5f), Vector2.down, 0.1f);
-        if (hit.collider != null && hit.collider.gameObject.CompareTag("Ground"))
-            return isGrounded = true;
+        //AT Send out two rays at each end of the character. The rays are intentionally offset downwards and to the sides for forgiving jumps
+        RaycastHit2D hitR = Physics2D.Raycast((transform.position + Vector3.down * 1.5f + Vector3.right * 0.8f), Vector2.down, 0.1f);
+        RaycastHit2D hitL = Physics2D.Raycast((transform.position + Vector3.down * 1.5f + Vector3.left * 0.4f), Vector2.down, 0.1f);
+
+        hits[0] = hitR;
+        hits[1] = hitL;
+        
+        for (int i = 0; i < hits.Length; i++)
+        {
+            //AT Check to see if the rays hit a collider, the collider is not a trigger, and the collider is tagged ground
+            if (hits[i].collider != null && !hits[i].collider.isTrigger && hits[i].collider.gameObject.CompareTag("Ground"))
+                return isGrounded = true;
+        }
         
         return isGrounded = false;
     }
