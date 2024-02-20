@@ -28,7 +28,7 @@ public class CameraFollow : MonoBehaviour
             float step =  followSpeed * Time.deltaTime; // calculate distance to move, change by frame rate
             transform.position = Vector3.MoveTowards(transform.position, groundedTarget, step);
         }
-        else if (!player.GetComponent<PlayerController>().isGrounded && Vector3.Distance(transform.position, airTarget) < deadZone)
+        else if (!player.GetComponent<PlayerController>().isGrounded && Vector3.Distance(transform.position, airTarget) > deadZone)
         {
             // Move our position a step closer to the target.
             float step =  followSpeed * Time.deltaTime; // calculate distance to move, change by frame rate
