@@ -27,7 +27,7 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-        //AT Set the _followSpeed (the actual value the logic checks) depending on how far the camera is from player
+         //AT Set the _followSpeed (the actual value the logic checks) depending on how far the camera is from player
         if (Input.GetAxisRaw("Horizontal") == 0 && pController.isGrounded)
         {
             _followSpeed = 20;
