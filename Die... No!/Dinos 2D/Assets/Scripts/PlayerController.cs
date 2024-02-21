@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -34,7 +35,28 @@ public class PlayerController : MonoBehaviour
     private void PlayerInputsAndMovement()
     {
         //AT Move the character using axis
-        transform.position += Vector3.right * (Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime);
+        if (Input.GetAxisRaw("Horizontal") != 0 && Math.Abs(rb.velocity.magnitude) < speed)
+        {
+            if ((Input.GetAxisRaw("Horizontal") * rb.velocity).x > 0)
+            {
+                rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * speed, 0));
+            }
+            else
+            {
+                rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * speed * 5, 0));
+            }
+            
+        }
+        else if (Input.GetAxisRaw("Horizontal") == 0 && Math.Abs(rb.velocity.magnitude) >= 0.5f)
+        {
+            rb.AddForce(new Vector2(-rb.velocity.x * 4f, 0));
+        }
+        if (Math.Abs(rb.velocity.magnitude) < 0.5f)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+        
+        //transform.position += Vector3.right * (Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime);
         
         //AT Hardcode jump to space key. Could change.
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -64,8 +86,11 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             //AT Check to see if the rays hit a collider, the collider is not a trigger, and the collider is tagged ground
-            if (hits[i].collider != null && !hits[i].collider.isTrigger && hits[i].collider.gameObject.CompareTag("Ground"))
+            if (hits[i].collider != null && !hits[i].collider.isTrigger &&
+                hits[i].collider.gameObject.CompareTag("Ground"))
+            {
                 return isGrounded = true;
+            }
         }
         
         return isGrounded = false;
