@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 public class OneWayCollisionCheck : MonoBehaviour
 {
     public GameObject oneWayCollision;
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer.Equals(6))
