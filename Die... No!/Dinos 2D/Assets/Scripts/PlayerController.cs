@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    public float jumpForce = 1000f;
-    public float speed = 1;
+    public float jumpForce = 2000f;
+    public float speed = 10;
     public bool isGrounded = true;
     public bool facingRight = true;
 
@@ -40,7 +41,26 @@ public class PlayerController : MonoBehaviour
         if((h > 0 && !facingRight) || (h < 0 && facingRight)) { Flip(); }
 
         //AT Move the character using axis
-        transform.position += Vector3.right * (h * speed * Time.deltaTime);
+        if (h != 0 && Math.Abs(rb.velocity.magnitude) < speed)
+        {
+            if ((h * rb.velocity).x > 0)
+            {
+                rb.AddForce(new Vector2(h * speed, 0));
+            }
+            else
+            {
+                rb.AddForce(new Vector2(h * speed * 5, 0));
+            }
+            
+        }
+        else if (h == 0 && Math.Abs(rb.velocity.magnitude) >= 0.5f)
+        {
+            rb.AddForce(new Vector2(-rb.velocity.x * 4f, 0));
+        }
+        if (Math.Abs(rb.velocity.magnitude) < 0.5f)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
         
         animator.SetBool("NotMoving", Mathf.Approximately(h, 0));
 

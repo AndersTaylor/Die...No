@@ -7,17 +7,17 @@ using UnityEngine.Tilemaps;
 public class OneWayCollisionCheck : MonoBehaviour
 {
     public GameObject oneWayCollision;
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer.Equals(6))
-            oneWayCollision.GetComponent<TilemapCollider2D>().isTrigger = false;
+            oneWayCollision.GetComponent<CompositeCollider2D>().isTrigger = false;
         
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.layer.Equals(6))
-            oneWayCollision.GetComponent<TilemapCollider2D>().isTrigger = true;
+            oneWayCollision.GetComponent<CompositeCollider2D>().isTrigger = true;
         
     }
 }

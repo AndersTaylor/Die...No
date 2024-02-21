@@ -173,8 +173,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 2000
-  speed: 8
+  speed: 10
   isGrounded: 1
+  facingRight: 1
   fallMultiplierFloat: 4
   lowJumpMultiplierFloat: 20
 --- !u!1 &9220351936736462722
