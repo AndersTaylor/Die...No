@@ -6,18 +6,21 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    public float jumpForce = 1000f;
-    public float speed = 1;
+    public float jumpForce = 2000f;
+    public float speed = 10;
     public bool isGrounded = true;
+    public bool facingRight = true;
 
     public float fallMultiplierFloat;
     public float lowJumpMultiplierFloat;
 	
     private Rigidbody2D rb;
+    private Animator animator;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 	
     private void Update() 
@@ -34,20 +37,23 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerInputsAndMovement()
     {
+        float h = Input.GetAxisRaw("Horizontal");
+        if((h > 0 && !facingRight) || (h < 0 && facingRight)) { Flip(); }
+
         //AT Move the character using axis
-        if (Input.GetAxisRaw("Horizontal") != 0 && Math.Abs(rb.velocity.magnitude) < speed)
+        if (h != 0 && Math.Abs(rb.velocity.magnitude) < speed)
         {
-            if ((Input.GetAxisRaw("Horizontal") * rb.velocity).x > 0)
+            if ((h * rb.velocity).x > 0)
             {
-                rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * speed, 0));
+                rb.AddForce(new Vector2(h * speed, 0));
             }
             else
             {
-                rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * speed * 5, 0));
+                rb.AddForce(new Vector2(h * speed * 5, 0));
             }
             
         }
-        else if (Input.GetAxisRaw("Horizontal") == 0 && Math.Abs(rb.velocity.magnitude) >= 0.5f)
+        else if (h == 0 && Math.Abs(rb.velocity.magnitude) >= 0.5f)
         {
             rb.AddForce(new Vector2(-rb.velocity.x * 4f, 0));
         }
@@ -56,16 +62,18 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
         
-        //transform.position += Vector3.right * (Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime);
-        
+        animator.SetBool("NotMoving", Mathf.Approximately(h, 0));
+
         //AT Hardcode jump to space key. Could change.
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if(Input.GetKeyDown(KeyCode.Space) && isGrounded) {
+            animator.SetTrigger("Jump");
             Jump(jumpForce);
-        
+        }
         //AT faster falling
-        if (rb.velocity.y < 0) 
+        if (rb.velocity.y < 0) {
+            animator.SetTrigger("JumpFall");
             rb.velocity += Vector2.up * (Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime);
-        
+        }
         //AT control jump height by length of time jump button held
         if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space)) 
             rb.velocity += Vector2.up * (Physics.gravity.y * (lowJumpMultiplierFloat - 1) * Time.deltaTime);
@@ -86,13 +94,19 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             //AT Check to see if the rays hit a collider, the collider is not a trigger, and the collider is tagged ground
-            if (hits[i].collider != null && !hits[i].collider.isTrigger &&
-                hits[i].collider.gameObject.CompareTag("Ground"))
-            {
+            if (hits[i].collider != null && !hits[i].collider.isTrigger && hits[i].collider.gameObject.CompareTag("Ground")) {
+                animator.SetBool("IsGrounded", true);
                 return isGrounded = true;
             }
         }
-        
+        animator.SetBool("IsGrounded", false);
         return isGrounded = false;
+    }
+
+    void Flip() {
+        facingRight = !facingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }
