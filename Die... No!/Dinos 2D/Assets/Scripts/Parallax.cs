@@ -10,12 +10,13 @@ public class Parallax : MonoBehaviour
     private float length;
     private SpriteRenderer[] childSprites;
     private float startPos;
-
-    public new GameObject camera;
+    private new GameObject camera;
+    
     public float parallaxEffect; //AT set to a number between 0 and 1. 1 = no parallax. >1 makes the backgrounds move opposite direction
 
     void Start()
     {
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
         startPos = transform.position.x;
         childSprites = GetComponentsInChildren<SpriteRenderer>(); //AT get all the sprites in the children of the attached empty game object
     }

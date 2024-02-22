@@ -806,7 +806,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Developed by Anders, LJ, Stella, and Carol of the BBC (Blue Balls Corporation)
+  m_text: Developed by Anders, LJ, Stella, Ariel, and Carol of the BBC (Blue Balls
+    Corporation)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8574463436b924ed7840fd6013c62d5e, type: 2}
   m_sharedMaterial: {fileID: -8228747359261167138, guid: 8574463436b924ed7840fd6013c62d5e, type: 2}
