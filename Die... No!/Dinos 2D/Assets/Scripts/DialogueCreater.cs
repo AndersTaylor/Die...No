@@ -9,20 +9,28 @@ public class DialogueCreater : MonoBehaviour
     public int currentLine = 0;
     public string[] lines;
     public TextMeshProUGUI textComponent;
+    public Vector2 newPosition;
+
+    private GameObject dialogueImage;
 
 
     // Start is called before the first frame update
     void Start()
     {
         textComponent = GetComponent<TextMeshProUGUI>();
-       
+        dialogueImage = GameObject.FindWithTag("DialogueImage");
+
+        RectTransform textRectTransform = textComponent.rectTransform;
+
+        textRectTransform.anchoredPosition = newPosition;
+
         ShowNextLine();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetMouseButtonDown(0))
         {
             ShowNextLine();
         }
@@ -39,6 +47,7 @@ public class DialogueCreater : MonoBehaviour
         {
             // If there are no more lines, clear the text
             textComponent.text = "";
+            Destroy(dialogueImage);
 
         }
     }
