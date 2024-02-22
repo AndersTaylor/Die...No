@@ -1,25 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class isCorrupted : MonoBehaviour
 {
-    public bool HasKey;
+    public bool hasKey;
     private Animator animator;
     private bool hasBeenPurified = false;
+    private GameController gc;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (HasKey && !hasBeenPurified)
+        //AT This is a crappy piece of code to be refactored for example in the GameController script 
+        // to set it once instead of checking every frame.
+        hasKey = gc.pickedUpKey;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(Purified());
+            if (hasKey && !hasBeenPurified)
+            {
+                StartCoroutine(Purified());
+            }
         }
     }
 
