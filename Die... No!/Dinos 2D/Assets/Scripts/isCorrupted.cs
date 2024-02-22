@@ -4,32 +4,36 @@ using UnityEngine;
 
 public class isCorrupted : MonoBehaviour
 {
-    public GameObject BlueDino;
-    public bool hasKey;
+    public bool HasKey;
     private Animator animator;
+    private bool hasBeenPurified = false;
 
     // Start is called before the first frame update
     void Start()
     {
-      animator = GetComponent<Animator> ();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hasKey == true)
+        if (HasKey && !hasBeenPurified)
         {
-            StartCoroutine(purified());
+            StartCoroutine(Purified());
         }
     }
-    
-    IEnumerator purified()
-    {
-        animator.SetTrigger("purify");
 
+    IEnumerator Purified()
+    {
+        animator.SetBool("Has Key", true);
+
+        // Wait for the purification animation to finish
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
 
-        Instantiate(BlueDino, transform.position, transform.rotation);
-        Destroy(gameObject);
+        // Set a flag to indicate that purification has been done
+        hasBeenPurified = true;
+
+        // Reset the parameter for next use
+        animator.SetBool("Has Key", false);
     }
 }
