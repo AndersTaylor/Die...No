@@ -427,6 +427,7 @@ MonoBehaviour:
   - Use the arrow keys or WASD keys to move! Remember, your first task is finding
     the first corrupted leader!
   textComponent: {fileID: 290092938}
+  currentLineEnd: 10
 --- !u!114 &290092938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23809,6 +23810,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.9
+--- !u!1001 &1635875012
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 547443834378458282, guid: 768f873cefabacd4aa09e56a80726095, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 547443834378458282, guid: 768f873cefabacd4aa09e56a80726095, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 547443834378458282, guid: 768f873cefabacd4aa09e56a80726095, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 547443834378458282, guid: 768f873cefabacd4aa09e56a80726095, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 547443834378458282, guid: 768f873cefabacd4aa09e56a80726095, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 547443834378458282, guid: 768f873cefabacd4aa09e56a80726095, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 547443834378458282, guid: 768f873cefabacd4aa09e56a80726095, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 547443834378458282, guid: 768f873cefabacd4aa09e56a80726095, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 547443834378458282, guid: 768f873cefabacd4aa09e56a80726095, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 547443834378458282, guid: 768f873cefabacd4aa09e56a80726095, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006047334396258260, guid: 768f873cefabacd4aa09e56a80726095, type: 3}
+      propertyPath: m_Name
+      value: Mushroom Guy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 768f873cefabacd4aa09e56a80726095, type: 3}
 --- !u!1 &1702304923
 GameObject:
   m_ObjectHideFlags: 0
@@ -24858,3 +24916,4 @@ SceneRoots:
   - {fileID: 722026657}
   - {fileID: 516248323}
   - {fileID: 79078586978410642}
+  - {fileID: 1635875012}
