@@ -1,35 +1,54 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class isCorrupted : MonoBehaviour
 {
-    public GameObject BlueDino;
     public bool hasKey;
     private Animator animator;
+    private bool hasBeenPurified = false;
+    private GameController gc;
 
     // Start is called before the first frame update
     void Start()
     {
-      animator = GetComponent<Animator> ();
+        animator = GetComponent<Animator>();
+        gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hasKey == true)
+        //AT This is a crappy piece of code to be refactored for example in the GameController script 
+        // to set it once instead of checking every frame.
+        hasKey = gc.pickedUpKey;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(purified());
+            if (hasKey && !hasBeenPurified)
+            {
+                StartCoroutine(Purified());
+            }
         }
     }
-    
-    IEnumerator purified()
-    {
-        animator.SetTrigger("purify");
 
+    IEnumerator Purified()
+    {
+        animator.SetBool("Has Key", true);
+
+        // Wait for the purification animation to finish
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
 
-        Instantiate(BlueDino, transform.position, transform.rotation);
-        Destroy(gameObject);
+        // Set a flag to indicate that purification has been done
+        hasBeenPurified = true;
+
+        // Reset the parameter for next use
+        animator.SetBool("Has Key", false);
     }
 }
