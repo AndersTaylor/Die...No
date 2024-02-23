@@ -9,9 +9,12 @@ public class DialogueCreater : MonoBehaviour
     public int currentLine = 0;
     public string[] lines;
     public TextMeshProUGUI textComponent;
-    public Vector2 newPosition;
+    public int currentLineEnd = 10;
+
 
     private GameObject dialogueImage;
+    private GameObject character;
+    private bool guyDiscovered;
 
 
     // Start is called before the first frame update
@@ -19,10 +22,7 @@ public class DialogueCreater : MonoBehaviour
     {
         textComponent = GetComponent<TextMeshProUGUI>();
         dialogueImage = GameObject.FindWithTag("DialogueImage");
-
-        //RectTransform textRectTransform = textComponent.rectTransform;
-
-        //textRectTransform.anchoredPosition = newPosition;
+        character = GameObject.FindWithTag("Player");
 
         ShowNextLine();
     }
@@ -30,25 +30,55 @@ public class DialogueCreater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            ShowNextLine();
+            if (guyDiscovered)
+            {
+                ShowNextLineEnd();
+            }
+            else
+            {
+                ShowNextLine();
+            }
         }
+        if (!guyDiscovered && character.transform.position.y >= 5.057f && character.transform.position.x >= 43f)
+        {
+            guyDiscovered = true;
+            ShowNextLineEnd();
+            dialogueImage.SetActive(true);
+        }
+  
+
     }
     void ShowNextLine()
     {
-        if (currentLine < lines.Length)
+        if (currentLine < 9)
         {
             // Display the current line and increment the index
             textComponent.text = lines[currentLine];
             currentLine++;
         }
+
         else
         {
             // If there are no more lines, clear the text
             textComponent.text = "";
-            Destroy(dialogueImage);
+            dialogueImage.SetActive(false);
 
+        }
+    }
+
+    void ShowNextLineEnd()
+    {
+        if (currentLineEnd < lines.Length)
+        {
+            textComponent.text = lines[currentLineEnd];
+            currentLineEnd++;
+        }
+        else
+        {
+            textComponent.text = "";
+            dialogueImage.SetActive(false);
         }
     }
 
