@@ -11,7 +11,7 @@ public class DialogueCreater : MonoBehaviour
     public TextMeshProUGUI textComponent;
     public int currentLineEnd = 10;
 
-
+    
     private GameObject dialogueImage;
     private GameObject character;
     private bool guyDiscovered;
@@ -24,13 +24,15 @@ public class DialogueCreater : MonoBehaviour
         dialogueImage = GameObject.FindWithTag("DialogueImage");
         character = GameObject.FindWithTag("Player");
 
+        character.GetComponent<PlayerController>().enabled = false;
+        
         ShowNextLine();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (guyDiscovered)
             {
@@ -62,6 +64,7 @@ public class DialogueCreater : MonoBehaviour
         else
         {
             // If there are no more lines, clear the text
+            character.GetComponent<PlayerController>().enabled = true;
             textComponent.text = "";
             dialogueImage.SetActive(false);
 
