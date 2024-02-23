@@ -8,6 +8,8 @@ TagManager:
   - RespawnLamp
   - DialogueImage
   - IDCanvas
+  - MushImage
+  - GuyImage
   layers:
   - Default
   - TransparentFX

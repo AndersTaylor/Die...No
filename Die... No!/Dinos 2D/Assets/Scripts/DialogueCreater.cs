@@ -13,6 +13,8 @@ public class DialogueCreater : MonoBehaviour
 
     
     private GameObject dialogueImage;
+    private GameObject mushImage;
+    private GameObject guyImage;
     private GameObject character;
     private bool guyDiscovered;
     private Rigidbody2D characterRB;
@@ -23,10 +25,13 @@ public class DialogueCreater : MonoBehaviour
     {
         textComponent = GetComponent<TextMeshProUGUI>();
         dialogueImage = GameObject.FindWithTag("DialogueImage");
+        mushImage = GameObject.FindWithTag("MushImage");
+        guyImage = GameObject.FindWithTag("GuyImage");
         character = GameObject.FindWithTag("Player");
 
         character.GetComponent<PlayerController>().enabled = false;
         characterRB = character.GetComponent<Rigidbody2D>();
+        guyImage.SetActive(false);
 
         ShowNextLine();
     }
@@ -52,6 +57,8 @@ public class DialogueCreater : MonoBehaviour
             dialogueImage.SetActive(true);
             character.GetComponent<PlayerController>().enabled = false;
             characterRB.velocity = Vector2.zero;
+            guyImage.SetActive(true);
+            mushImage.SetActive(false);
             //characterRB.angularVelocity = Vector2.zero;
         }
 
@@ -72,6 +79,7 @@ public class DialogueCreater : MonoBehaviour
             character.GetComponent<PlayerController>().enabled = true;
             textComponent.text = "";
             dialogueImage.SetActive(false);
+            mushImage.SetActive(false);
 
         }
     }
@@ -88,6 +96,7 @@ public class DialogueCreater : MonoBehaviour
             textComponent.text = "";
             dialogueImage.SetActive(false);
             character.GetComponent<PlayerController>().enabled = true;
+            guyImage.SetActive(false);
         }
     }
 
