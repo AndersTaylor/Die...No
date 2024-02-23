@@ -426,7 +426,15 @@ MonoBehaviour:
     task! '
   - Use the arrow keys or WASD keys to move! Remember, your first task is finding
     the first corrupted leader!
+  - You've found me, the first leader. RAAAAAAAHHHHHHH!!!
+  - 'Anyways, Solve the riddle to fiddle what I require: '
+  - "I get cut but I never bleed, I have teeth but I don\u2019t bite, I get put on
+    a ring but I\u2019m not a diamond, and I get turned but I\u2019m not a page. "
+  - "I get cut but I never bleed, I have teeth but I don\u2019t bite, I get put on
+    a ring but I\u2019m not a diamond, and I get turned but I\u2019m not a page.
+    (Click again to get rid of riddle)."
   textComponent: {fileID: 290092938}
+  currentLineEnd: 10
 --- !u!114 &290092938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4183,6 +4191,7 @@ GameObject:
   - component: {fileID: 516248323}
   - component: {fileID: 516248325}
   - component: {fileID: 516248324}
+  - component: {fileID: 516248326}
   m_Layer: 0
   m_Name: Key Container
   m_TagString: Untagged
@@ -4263,6 +4272,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.7522044}
   m_EdgeRadius: 0
+--- !u!114 &516248326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516248320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb699e0473114b2fbcc30eb987d099a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &524652726
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,7 +52,7 @@ public class DialogueCreater : MonoBehaviour
     }
     void ShowNextLine()
     {
-        if (currentLine < 9)
+        if (currentLine < 10)
         {
             // Display the current line and increment the index
             textComponent.text = lines[currentLine];
