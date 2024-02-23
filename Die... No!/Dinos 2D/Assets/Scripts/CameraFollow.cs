@@ -6,8 +6,34 @@ using Vector2 = System.Numerics.Vector2;
 
 public class CameraFollow : MonoBehaviour
 {
+    public float dampTime = 0.15f;
+    public Transform target;
+    
+    private Vector3 velocity = Vector3.zero;
+    private Camera camera;
+
+    private void Start()
+    {
+        camera = GetComponent<Camera>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    void Update () 
+    {
+        if (target)
+        {
+            Vector3 point = camera.WorldToViewportPoint(target.position);
+            Vector3 delta = target.position - camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z)); //(new Vector3(0.5, 0.5, point.z));
+            Vector3 destination = transform.position + delta;
+            transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
+        }
+	
+    }
+    
+    /*
     public float followSpeed = 9f;
     public float deadZone = 0.25f;
+    
     public float topEdge;
     public float bottEdge;
     public float rightEdge;
@@ -25,16 +51,12 @@ public class CameraFollow : MonoBehaviour
         pController = player.GetComponent<PlayerController>();
     }
 
+    
     private void Update()
     {
          //AT Set the _followSpeed (the actual value the logic checks) depending on how far the camera is from player
-        if (Input.GetAxisRaw("Horizontal") == 0 && pController.isGrounded)
-        {
-            _followSpeed = followSpeed;
-            //_followSpeed = 20;
-        }
-        else if (Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.y),
-                new Vector2(transform.position.x, transform.position.y)) > 3)
+        if (Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.y),
+                 new Vector2(transform.position.x, transform.position.y)) > 3)
         {
             _followSpeed = pController.speed;
         }
@@ -79,4 +101,5 @@ public class CameraFollow : MonoBehaviour
             transform.position = newPosition;
         }
     }
+    */
 }

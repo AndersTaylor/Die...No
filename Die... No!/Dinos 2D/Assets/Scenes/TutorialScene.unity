@@ -296,15 +296,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5718643339236198693, guid: 3eac34dfbcf8246409e1854da7466f19, type: 3}
       propertyPath: speed
-      value: 10
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718643339236198693, guid: 3eac34dfbcf8246409e1854da7466f19, type: 3}
+      propertyPath: jumpForce
+      value: 1900
       objectReference: {fileID: 0}
     - target: {fileID: 5718643339236198693, guid: 3eac34dfbcf8246409e1854da7466f19, type: 3}
       propertyPath: fallMultiplierFloat
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5718643339236198693, guid: 3eac34dfbcf8246409e1854da7466f19, type: 3}
       propertyPath: lowJumpMultiplierFloat
-      value: 100
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7109365735385672898, guid: 3eac34dfbcf8246409e1854da7466f19, type: 3}
       propertyPath: m_LocalPosition.x
@@ -473,7 +477,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09200001, y: 0.083517775}
   m_AnchorMax: {x: 0.35339618, y: 0.17236984}
-  m_AnchoredPosition: {x: 198, y: 18}
+  m_AnchoredPosition: {x: 197.99997, y: 18}
   m_SizeDelta: {x: 8.015, y: 7.839}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &290092937
@@ -1082,6 +1086,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &397123272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7709419620024155521, guid: 2463a011d045133488e66feacece93c0, type: 3}
+  m_PrefabInstance: {fileID: 3478259292793106770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &397123276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397123272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aa3e293f1fb24a4b9852d6734b8f29c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dampTime: 0.15
+  target: {fileID: 0}
 --- !u!1 &416768175
 GameObject:
   m_ObjectHideFlags: 0
@@ -23351,7 +23374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1016381349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25080,10 +25103,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera Follow
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1264974388315965577, guid: 2463a011d045133488e66feacece93c0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7709419620024155521, guid: 2463a011d045133488e66feacece93c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 397123276}
   m_SourcePrefab: {fileID: 100100000, guid: 2463a011d045133488e66feacece93c0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

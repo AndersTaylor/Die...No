@@ -10,17 +10,20 @@ public class PlayerController : MonoBehaviour
     public float speed = 10;
     public bool isGrounded = true;
     public bool facingRight = true;
-
-    public float fallMultiplierFloat;
     public float lowJumpMultiplierFloat;
 	
     private Rigidbody2D rb;
     private Animator animator;
+    private float gravityScale;
+    
+    public bool goingUp;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        gravityScale = rb.gravityScale;
     }
 	
     private void Update() 
@@ -40,48 +43,35 @@ public class PlayerController : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         if((h > 0 && !facingRight) || (h < 0 && facingRight)) { Flip(); }
 
-        rb.velocity = new Vector2(h * speed, rb.velocity.y);
+        //AT Give more movement control in the air?
+        rb.velocity = isGrounded ? new Vector2(h * speed, rb.velocity.y) : new Vector2(h * speed * 1.2f, rb.velocity.y);
         
-        //AT Move the character using axis
-        /*if (h != 0 && Math.Abs(rb.velocity.magnitude) < speed)
-        {
-            if ((h * rb.velocity).x > 0)
-            {
-                rb.velocity = new Vector2(h * speed, rb.velocity.y);
-                //rb.AddForce(new Vector2(h * speed, 0));
-            }
-            else
-            {
-                rb.velocity = new Vector2(h * speed * 5, rb.velocity.y);
-                //rb.AddForce(new Vector2(h * speed * 5, 0));
-            }
-        }
-        else if (h == 0 && Math.Abs(rb.velocity.magnitude) >= 0.5f)
-        {
-            //rb.velocity = new Vector2(-rb.velocity.x * 4f, rb.velocity.y);
-            //rb.AddForce(new Vector2(-rb.velocity.x * 4f, 0));
-        }
-        if (Math.Abs(rb.velocity.magnitude) < 0.5f)
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }*/
         
         animator.SetBool("NotMoving", Mathf.Approximately(h, 0));
 
         //AT Hardcode jump to space key. Could change.
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded) {
+        if(Input.GetKeyDown(KeyCode.Space) && isGrounded) 
+        {
             animator.SetTrigger("Jump");
             Jump(jumpForce);
-        }
-        //AT faster falling
-        if (rb.velocity.y < 0) {
-            animator.SetTrigger("JumpFall");
-            rb.velocity += Vector2.up * (Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime);
+            goingUp = true;
         }
         
         //AT control jump height by length of time jump button held
-        if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space)) 
-            rb.velocity += Vector2.up * (Physics.gravity.y * (lowJumpMultiplierFloat - 1) * Time.deltaTime);
+        if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        {
+            rb.gravityScale = lowJumpMultiplierFloat;
+            //rb.velocity += Vector2.down * ((lowJumpMultiplierFloat - 1) * Time.deltaTime);
+        }
+        else if (rb.velocity.y < 0 && goingUp) 
+        {
+            animator.SetTrigger("JumpFall");
+            StartCoroutine(FloatyJump());
+        }
+        else
+        {
+            rb.gravityScale = gravityScale;
+        }
     }
 
     private bool CheckIsGrounded()
@@ -90,7 +80,7 @@ public class PlayerController : MonoBehaviour
         
         //AT Hardcoded distance down to check for ground. Will be different depending on character sprite
         //AT Send out two rays at each end of the character. The rays are intentionally offset downwards and to the sides for forgiving jumps
-        RaycastHit2D hitR = Physics2D.Raycast((transform.position + Vector3.down * 1.5f + Vector3.right * 0.8f), Vector2.down, 0.1f);
+        RaycastHit2D hitR = Physics2D.Raycast((transform.position + Vector3.down * 1.5f + Vector3.right * 0.7f), Vector2.down, 0.1f);
         RaycastHit2D hitL = Physics2D.Raycast((transform.position + Vector3.down * 1.5f + Vector3.left * 0.4f), Vector2.down, 0.1f);
 
         hits[0] = hitR;
@@ -99,7 +89,8 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             //AT Check to see if the rays hit a collider, the collider is not a trigger, and the collider is tagged ground
-            if (hits[i].collider != null && !hits[i].collider.isTrigger && hits[i].collider.gameObject.CompareTag("Ground")) {
+            if (hits[i].collider != null && !hits[i].collider.isTrigger && hits[i].collider.gameObject.CompareTag("Ground")) 
+            {
                 animator.SetBool("IsGrounded", true);
                 return isGrounded = true;
             }
@@ -113,5 +104,12 @@ public class PlayerController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    IEnumerator FloatyJump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        yield return new WaitForSeconds(0.1f);
+        goingUp = false;
     }
 }
