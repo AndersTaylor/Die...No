@@ -15,6 +15,7 @@ public class DialogueCreater : MonoBehaviour
     private GameObject dialogueImage;
     private GameObject character;
     private bool guyDiscovered;
+    private Rigidbody2D characterRB;
 
 
     // Start is called before the first frame update
@@ -25,7 +26,8 @@ public class DialogueCreater : MonoBehaviour
         character = GameObject.FindWithTag("Player");
 
         character.GetComponent<PlayerController>().enabled = false;
-        
+        characterRB = character.GetComponent<Rigidbody2D>();
+
         ShowNextLine();
     }
 
@@ -49,8 +51,10 @@ public class DialogueCreater : MonoBehaviour
             ShowNextLineEnd();
             dialogueImage.SetActive(true);
             character.GetComponent<PlayerController>().enabled = false;
+            characterRB.velocity = Vector2.zero;
+            //characterRB.angularVelocity = Vector2.zero;
         }
-  
+
 
     }
     void ShowNextLine()

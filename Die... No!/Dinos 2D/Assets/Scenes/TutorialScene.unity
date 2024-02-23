@@ -424,12 +424,13 @@ MonoBehaviour:
   - Use the arrow keys or WASD keys to move! Remember, your first task is finding
     the first corrupted leader!
   - You've found me, the first leader. RAAAAAAAHHHHHHH!!!
+  - You've found me, the first leader. RAAAAAAAHHHHHHH!!!
   - 'Anyways, Solve the riddle to fiddle what I require: '
   - "I get cut but I never bleed, I have teeth but I don\u2019t bite, I get put on
     a ring but I\u2019m not a diamond, and I get turned but I\u2019m not a page. "
   - "I get cut but I never bleed, I have teeth but I don\u2019t bite, I get put on
     a ring but I\u2019m not a diamond, and I get turned but I\u2019m not a page.
-    (Click again to get rid of riddle)."
+    (Hit space again to get rid of riddle)."
   textComponent: {fileID: 290092938}
   currentLineEnd: 10
 --- !u!114 &290092938
