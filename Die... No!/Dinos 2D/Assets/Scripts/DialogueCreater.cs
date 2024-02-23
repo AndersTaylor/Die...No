@@ -9,7 +9,7 @@ public class DialogueCreater : MonoBehaviour
     public int currentLine = 0;
     public string[] lines;
     public TextMeshProUGUI textComponent;
-    public int currentLineEnd = 10;
+    public int currentLineEnd = 9;
 
     
     private GameObject dialogueImage;
@@ -54,7 +54,7 @@ public class DialogueCreater : MonoBehaviour
     }
     void ShowNextLine()
     {
-        if (currentLine < 10)
+        if (currentLine < 9)
         {
             // Display the current line and increment the index
             textComponent.text = lines[currentLine];
