@@ -48,6 +48,7 @@ public class DialogueCreater : MonoBehaviour
             guyDiscovered = true;
             ShowNextLineEnd();
             dialogueImage.SetActive(true);
+            character.GetComponent<PlayerController>().enabled = false;
         }
   
 
@@ -82,6 +83,7 @@ public class DialogueCreater : MonoBehaviour
         {
             textComponent.text = "";
             dialogueImage.SetActive(false);
+            character.GetComponent<PlayerController>().enabled = true;
         }
     }
 

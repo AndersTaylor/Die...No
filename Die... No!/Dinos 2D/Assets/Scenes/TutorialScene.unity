@@ -404,7 +404,7 @@ MonoBehaviour:
   currentLine: 0
   lines:
   - Hello, and welcome to our enchanting world! It truly is a beautiful place, filled
-    with wonder and joy. (Left click to continue)
+    with wonder and joy. (Space to continue)
   - 'However, a dark shadow has recently descended upon us, corrupting our once noble
     leaders. '
   - Each biome is presided over by a majestic dinosaur, who once ruled with kindness
