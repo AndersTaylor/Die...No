@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class isCorrupted : MonoBehaviour
@@ -50,5 +51,14 @@ public class isCorrupted : MonoBehaviour
 
         // Reset the parameter for next use
         animator.SetBool("Has Key", false);
+        
+        StartCoroutine(TempLoadEnd());
+    }
+
+    //AT delete l8r
+    IEnumerator TempLoadEnd()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("EndScene");
     }
 }

@@ -20,9 +20,9 @@ public class DialogueCreater : MonoBehaviour
         textComponent = GetComponent<TextMeshProUGUI>();
         dialogueImage = GameObject.FindWithTag("DialogueImage");
 
-        RectTransform textRectTransform = textComponent.rectTransform;
+        //RectTransform textRectTransform = textComponent.rectTransform;
 
-        textRectTransform.anchoredPosition = newPosition;
+        //textRectTransform.anchoredPosition = newPosition;
 
         ShowNextLine();
     }
