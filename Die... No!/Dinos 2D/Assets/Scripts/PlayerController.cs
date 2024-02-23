@@ -40,27 +40,31 @@ public class PlayerController : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         if((h > 0 && !facingRight) || (h < 0 && facingRight)) { Flip(); }
 
+        rb.velocity = new Vector2(h * speed, rb.velocity.y);
+        
         //AT Move the character using axis
-        if (h != 0 && Math.Abs(rb.velocity.magnitude) < speed)
+        /*if (h != 0 && Math.Abs(rb.velocity.magnitude) < speed)
         {
             if ((h * rb.velocity).x > 0)
             {
-                rb.AddForce(new Vector2(h * speed, 0));
+                rb.velocity = new Vector2(h * speed, rb.velocity.y);
+                //rb.AddForce(new Vector2(h * speed, 0));
             }
             else
             {
-                rb.AddForce(new Vector2(h * speed * 5, 0));
+                rb.velocity = new Vector2(h * speed * 5, rb.velocity.y);
+                //rb.AddForce(new Vector2(h * speed * 5, 0));
             }
-            
         }
         else if (h == 0 && Math.Abs(rb.velocity.magnitude) >= 0.5f)
         {
-            rb.AddForce(new Vector2(-rb.velocity.x * 4f, 0));
+            //rb.velocity = new Vector2(-rb.velocity.x * 4f, rb.velocity.y);
+            //rb.AddForce(new Vector2(-rb.velocity.x * 4f, 0));
         }
         if (Math.Abs(rb.velocity.magnitude) < 0.5f)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
-        }
+        }*/
         
         animator.SetBool("NotMoving", Mathf.Approximately(h, 0));
 
@@ -74,6 +78,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("JumpFall");
             rb.velocity += Vector2.up * (Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime);
         }
+        
         //AT control jump height by length of time jump button held
         if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space)) 
             rb.velocity += Vector2.up * (Physics.gravity.y * (lowJumpMultiplierFloat - 1) * Time.deltaTime);

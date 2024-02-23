@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa3e293f1fb24a4b9852d6734b8f29c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeed: 8
+  followSpeed: 5
   deadZone: 0.5
   topEdge: 1
   bottEdge: -5

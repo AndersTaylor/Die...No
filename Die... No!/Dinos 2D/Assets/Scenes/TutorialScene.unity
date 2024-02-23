@@ -294,6 +294,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fox
       objectReference: {fileID: 0}
+    - target: {fileID: 5718643339236198693, guid: 3eac34dfbcf8246409e1854da7466f19, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718643339236198693, guid: 3eac34dfbcf8246409e1854da7466f19, type: 3}
+      propertyPath: fallMultiplierFloat
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718643339236198693, guid: 3eac34dfbcf8246409e1854da7466f19, type: 3}
+      propertyPath: lowJumpMultiplierFloat
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7109365735385672898, guid: 3eac34dfbcf8246409e1854da7466f19, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.78
@@ -23334,7 +23346,7 @@ GameObject:
   - component: {fileID: 1016381350}
   - component: {fileID: 1016381349}
   m_Layer: 5
-  m_Name: Intro Dialogue
+  m_Name: Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -30,7 +30,8 @@ public class CameraFollow : MonoBehaviour
          //AT Set the _followSpeed (the actual value the logic checks) depending on how far the camera is from player
         if (Input.GetAxisRaw("Horizontal") == 0 && pController.isGrounded)
         {
-            _followSpeed = 20;
+            _followSpeed = followSpeed;
+            //_followSpeed = 20;
         }
         else if (Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.y),
                 new Vector2(transform.position.x, transform.position.y)) > 3)

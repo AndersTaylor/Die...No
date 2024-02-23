@@ -9,7 +9,7 @@ public class DialogueCreater : MonoBehaviour
     public int currentLine = 0;
     public string[] lines;
     public TextMeshProUGUI textComponent;
-    public int currentLineEnd = 9;
+    public int currentLineEnd = 8;
 
     
     private GameObject dialogueImage;
