@@ -7,8 +7,8 @@ using Vector2 = System.Numerics.Vector2;
 public class CameraFollow : MonoBehaviour
 {
     public float dampTime = 0.15f;
-    public Transform target;
     
+    private Transform target;
     private Vector3 velocity = Vector3.zero;
     private Camera camera;
 
