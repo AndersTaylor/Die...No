@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(Vector2.up * _jumpForce);
         isGrounded = false;
+        //Debug.Log("jump");
     }
 
     private void PlayerInputsAndMovement()
