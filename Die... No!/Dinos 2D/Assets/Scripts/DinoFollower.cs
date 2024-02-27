@@ -8,10 +8,11 @@ public class DinoFollower : MonoBehaviour
 {
     public float speed = 1;
 
-    private bool isSitting = false;
     private GameObject player;
     private Transform target;
     private Rigidbody2D rb;
+    private bool isSitting = false;
+    private  bool shouldMove;
 
     void Start()
     {
@@ -20,29 +21,30 @@ public class DinoFollower : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    //AT To Do:
-    // - Smoothly follow player on x axis, always trying to get to its spot in line behind player
-    //    - What if player turns around?
-    // - Sit on player keypress to stop moving
-
-
     void Update()
     {
-        if (!isSitting)
+        if (!player)
         {
-            if (Vector2.Distance(target.position, transform.position) < 2)
-                rb.velocity = Vector2.zero;
-            else if (target.position.x - 2 > transform.position.x)
-                rb.velocity = new Vector2(speed, 0);
-            else if (target.position.x - 2 < transform.position.x)
-                rb.velocity = new Vector2(-speed, 0);
+            player = GameObject.FindGameObjectWithTag("Player");
+            target = player.transform;
+        }
+        
+        if (!isSitting && shouldMove)
+        {
+            if (target.position.x > transform.position.x)
+                rb.velocity = new Vector2(speed, rb.velocity.y);
+            else if (target.position.x < transform.position.x)
+                rb.velocity = new Vector2(-speed, rb.velocity.y);
 
             //teleport
             if (Vector2.Distance(target.position, transform.position) > 10)
             {
                 transform.position = target.position;
             }
-
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
         }
 
         //sit when clicked on
@@ -51,7 +53,7 @@ public class DinoFollower : MonoBehaviour
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
-            if (hit.collider.gameObject == gameObject)
+            if (hit.collider != null && hit.collider.gameObject == gameObject)
             {
                 StopStart();
             }
@@ -65,6 +67,22 @@ public class DinoFollower : MonoBehaviour
         if (isSitting)
         {
             rb.velocity = Vector2.zero;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            shouldMove = false;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            shouldMove = true;
         }
     }
 }
