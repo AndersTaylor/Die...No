@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a70ee1fbce341a9a16d3fc2e374fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnYThreshold: -10
+  respawnYThreshold: -20
 --- !u!95 &-5672484874990904416
 Animator:
   serializedVersion: 5

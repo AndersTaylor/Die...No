@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-    public float respawnYThreshold = -10f;
+    public float respawnYThreshold = -25f;
 
     //public GameObject respawnPrefab;
 
@@ -30,6 +30,7 @@ public class PlayerDeath : MonoBehaviour
     }
     void RespawnPlayer()
     {
+        
         GameObject newPlayer = Instantiate(gameObject, respawnPosition, Quaternion.identity);
         Destroy(gameObject);
     }
