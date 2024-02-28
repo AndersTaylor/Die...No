@@ -18,12 +18,18 @@ public class PlayerController : MonoBehaviour
     
     public bool goingUp;
 
+    public AudioClip jumpSound;
+    private AudioSource audioSource;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
         gravityScale = rb.gravityScale;
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = jumpSound;
     }
 	
     private void Update() 
@@ -34,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump(float _jumpForce)
     {
+        PlayJumpSound();
         rb.AddForce(Vector2.up * _jumpForce);
         isGrounded = false;
         //Debug.Log("jump");
@@ -112,5 +119,12 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 0);
         yield return new WaitForSeconds(0.1f);
         goingUp = false;
+    }
+    void PlayJumpSound()
+    {
+        if (jumpSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(jumpSound);
+        }
     }
 }
