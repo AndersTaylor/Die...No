@@ -5,6 +5,7 @@ using TMPro;
 
 public class DialogueCreater : MonoBehaviour
 {
+    //please michael i know this script is bad but i can not do anything abt it now
 
     public int currentLine = 0;
     public string[] lines;
