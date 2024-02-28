@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             //AT Check to see if the rays hit a collider, the collider is not a trigger, and the collider is tagged ground
-            if (hits[i].collider != null && !hits[i].collider.isTrigger && hits[i].collider.gameObject.CompareTag("Ground")) 
+            if (hits[i].collider != null && !hits[i].collider.isTrigger && (hits[i].collider.gameObject.CompareTag("Ground") || hits[i].collider.gameObject.CompareTag("Dino"))) 
             {
                 animator.SetBool("IsGrounded", true);
                 return isGrounded = true;

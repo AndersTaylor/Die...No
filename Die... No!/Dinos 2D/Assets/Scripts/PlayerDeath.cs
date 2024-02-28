@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-    public float respawnYThreshold = -25f;
+    public float respawnYThreshold = -20f;
 
     //public GameObject respawnPrefab;
 
@@ -13,11 +13,7 @@ public class PlayerDeath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject respawnObject = GameObject.FindGameObjectWithTag("RespawnLamp");
-        if (respawnObject != null)
-        {
-            respawnPosition = respawnObject.transform.position;
-        }
+        respawnPosition = new Vector3(-12.62f, -0.21f, 0);
     }
 
     // Update is called once per frame
@@ -33,6 +29,14 @@ public class PlayerDeath : MonoBehaviour
         
         GameObject newPlayer = Instantiate(gameObject, respawnPosition, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    public void UpdateLastCheckpoint(Vector3 checkpointPosition)
+    {
+        if (checkpointPosition.x > respawnPosition.x)
+        {
+            respawnPosition = checkpointPosition;
+        }
     }
 
 }
