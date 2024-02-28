@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public bool goingUp;
 
     public ParticleSystem dust;
+    public AudioClip jumpSound;
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -26,6 +28,9 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         gravityScale = rb.gravityScale;
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = jumpSound;
     }
 	
     private void Update() 
@@ -37,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private void Jump(float _jumpForce)
     {
         CreateDust();
+        PlayJumpSound();
         rb.AddForce(Vector2.up * _jumpForce);
         isGrounded = false;
         //Debug.Log("jump");
@@ -121,5 +127,12 @@ public class PlayerController : MonoBehaviour
     void CreateDust()
     {
         dust.Play();
+    }
+    void PlayJumpSound()
+    {
+        if (jumpSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(jumpSound);
+        }
     }
 }
