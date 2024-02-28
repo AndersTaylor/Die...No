@@ -9,13 +9,14 @@ public class PlatformBehavior : MonoBehaviour
     private float moveSpeed = 3f;
     private ButtonBehavior buttonScript;
     private bool moving;
-    private Vector3 end = new Vector3(0.947f, -4, 0);
-    private Vector3 start = new Vector3(0.947f, 2, 0);
+    public Vector3 end;
+    public Vector3 start;
 
     // Start is called before the first frame update
     void Start()
     {
        buttonScript = button.GetComponent<ButtonBehavior>();
+        start = transform.position;
     }
 
     // Update is called once per frame
