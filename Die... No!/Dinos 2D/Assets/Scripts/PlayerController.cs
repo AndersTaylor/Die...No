@@ -18,8 +18,6 @@ public class PlayerController : MonoBehaviour
     
     public bool goingUp;
 
-    public ParticleSystem dust;
-
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,7 +34,6 @@ public class PlayerController : MonoBehaviour
 
     private void Jump(float _jumpForce)
     {
-        CreateDust();
         rb.AddForce(Vector2.up * _jumpForce);
         isGrounded = false;
         //Debug.Log("jump");
@@ -104,7 +101,6 @@ public class PlayerController : MonoBehaviour
     }
 
     void Flip() {
-        CreateDust();
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
@@ -116,10 +112,5 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 0);
         yield return new WaitForSeconds(0.1f);
         goingUp = false;
-    }
-
-    void CreateDust()
-    {
-        dust.Play();
     }
 }
