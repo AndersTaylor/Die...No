@@ -3958,6 +3958,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5429675021845477470, guid: c4731eadd7fea564c91ae9171891465d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1898779321, guid: 65b4bc505b51c754c80c3af3b8d88925, type: 3}
     - target: {fileID: 8270347600963155816, guid: c4731eadd7fea564c91ae9171891465d, type: 3}
       propertyPath: m_Name
       value: YellowFollower
@@ -8122,7 +8126,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 37
-      m_TileSpriteIndex: 21
+      m_TileSpriteIndex: 29
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9891,8 +9895,8 @@ Tilemap:
     m_Data: {fileID: -1625508164, guid: 61a28c39801ae374e89193038f9bd8c7, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -298470127, guid: 61a28c39801ae374e89193038f9bd8c7, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -825238166, guid: 61a28c39801ae374e89193038f9bd8c7, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -1611612088, guid: 61a28c39801ae374e89193038f9bd8c7, type: 3}
   - m_RefCount: 3
@@ -9907,8 +9911,8 @@ Tilemap:
     m_Data: {fileID: 1887110769, guid: 61a28c39801ae374e89193038f9bd8c7, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 229041772, guid: 61a28c39801ae374e89193038f9bd8c7, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -825238166, guid: 61a28c39801ae374e89193038f9bd8c7, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 568
     m_Data:

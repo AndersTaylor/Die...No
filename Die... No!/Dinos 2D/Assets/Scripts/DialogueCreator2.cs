@@ -38,17 +38,6 @@ public class DialogueCreater2 : MonoBehaviour
             ShowNextLine();
             
         }
-        //if (!guyDiscovered && character.transform.position.y >= 5.057f && character.transform.position.x >= 43f)
-        //{
-        //    guyDiscovered = true;
-        //    ShowNextLineEnd();
-        //    dialogueImage.SetActive(true);
-        //    character.GetComponent<PlayerController>().enabled = false;
-        //    characterRB.velocity = Vector2.zero;
-        //    guyImage.SetActive(true);
-        //    mushImage.SetActive(false);
-        //    //characterRB.angularVelocity = Vector2.zero;
-        //}
 
 
     }
@@ -73,20 +62,5 @@ public class DialogueCreater2 : MonoBehaviour
         }
     }
 
-    //void ShowNextLineEnd()
-    //{
-    //    if (currentLineEnd < lines.Length)
-    //    {
-    //        textComponent.text = lines[currentLineEnd];
-    //        currentLineEnd++;
-    //    }
-    //    else
-    //    {
-    //        textComponent.text = "";
-    //        dialogueImage.SetActive(false);
-    //        character.GetComponent<PlayerController>().enabled = true;
-    //        guyImage.SetActive(false);
-    //    }
-    //}
 
 }

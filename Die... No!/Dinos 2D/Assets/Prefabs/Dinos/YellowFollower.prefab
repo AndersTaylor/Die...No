@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 2571850277598921667}
   - component: {fileID: 9073767335234473227}
   - component: {fileID: 2715757764384971542}
+  - component: {fileID: -577640572584132512}
   m_Layer: 0
   m_Name: YellowFollower
   m_TagString: Untagged
@@ -175,7 +176,7 @@ Animator:
   m_GameObject: {fileID: 8270347600963155816}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2cc77efb5212d064e8d02b9909449d3b, type: 2}
+  m_Controller: {fileID: 9100000, guid: adebaa700b9054868a719d57274e754b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -244,3 +245,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+--- !u!114 &-577640572584132512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8270347600963155816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 813c7b28461c6474ba006af495c14e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingRight: 1
