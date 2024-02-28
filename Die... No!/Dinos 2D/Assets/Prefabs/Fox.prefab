@@ -181,8 +181,8 @@ MonoBehaviour:
   facingRight: 1
   lowJumpMultiplierFloat: 25
   goingUp: 0
-  dust: {fileID: 0}
-  jumpSound: {fileID: 0}
+  dust: {fileID: 4126005059500215630, guid: c3f89e17454f5494ebf502c36a782a6a, type: 3}
+  jumpSound: {fileID: 8300000, guid: 38cb0b7b1200846389ed778696088881, type: 3}
 --- !u!114 &-5056967138413218047
 MonoBehaviour:
   m_ObjectHideFlags: 0
