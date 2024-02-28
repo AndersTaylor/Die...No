@@ -482,6 +482,10 @@ PrefabInstance:
       value: Fox
       objectReference: {fileID: 0}
     - target: {fileID: 5718643339236198693, guid: 3eac34dfbcf8246409e1854da7466f19, type: 3}
+      propertyPath: dust
+      value: 
+      objectReference: {fileID: 4126005059500215630, guid: c3f89e17454f5494ebf502c36a782a6a, type: 3}
+    - target: {fileID: 5718643339236198693, guid: 3eac34dfbcf8246409e1854da7466f19, type: 3}
       propertyPath: jumpSound
       value: 
       objectReference: {fileID: 8300000, guid: 38cb0b7b1200846389ed778696088881, type: 3}
