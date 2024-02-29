@@ -6,14 +6,15 @@ public class PlayerDeath : MonoBehaviour
 {
     public float respawnYThreshold = -20f;
 
-    //public GameObject respawnPrefab;
+    private GameObject startLamp;
 
     private Vector3 respawnPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        respawnPosition = new Vector3(-12.62f, -0.21f, 0);
+        startLamp = GameObject.FindGameObjectWithTag("StartLamp");
+        respawnPosition = startLamp.transform.position;
     }
 
     // Update is called once per frame

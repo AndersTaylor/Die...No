@@ -9850,6 +9850,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 154, y: 2, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 42
+      m_TileSpriteIndex: 15
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 159, y: 2, z: 0}
     second:
       serializedVersion: 2
@@ -10356,7 +10366,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 44427a0b84b960740b88abb49a384eb1, type: 2}
   - m_RefCount: 41
     m_Data: {fileID: 11400000, guid: 5af41f0ff39f16b42a6a8ffacd47968b, type: 2}
-  - m_RefCount: 4
+  - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 28f18fb22a266884c90d09f654422a0c, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 90ab5d0515a3fd24ab77e41f496d9a53, type: 2}
@@ -10401,7 +10411,7 @@ Tilemap:
     m_Data: {fileID: -1930348685, guid: 61a28c39801ae374e89193038f9bd8c7, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 481849872, guid: 61a28c39801ae374e89193038f9bd8c7, type: 3}
-  - m_RefCount: 4
+  - m_RefCount: 5
     m_Data: {fileID: 351958216, guid: 61a28c39801ae374e89193038f9bd8c7, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -2021419626, guid: 61a28c39801ae374e89193038f9bd8c7, type: 3}
@@ -10432,7 +10442,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -825238166, guid: 61a28c39801ae374e89193038f9bd8c7, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 569
+  - m_RefCount: 570
     m_Data:
       e00: 1
       e01: 0
@@ -10451,7 +10461,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 569
+  - m_RefCount: 570
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -10677,9 +10687,9 @@ CompositeCollider2D:
       - X: 1540000000
         Y: 59583336
       - X: 1540000000
-        Y: 30000000
+        Y: 20000000
       - X: 1550000000
-        Y: 30000000
+        Y: 20000000
       - X: 1550000000
         Y: 50000000
       - X: 1580000000
@@ -11557,8 +11567,8 @@ CompositeCollider2D:
       - {x: 154.99997, y: 6}
       - {x: 154.04167, y: 5.9999924}
       - {x: 154, y: 5.958323}
-      - {x: 154.00003, y: 3}
-      - {x: 155, y: 3.0000293}
+      - {x: 154.00003, y: 2}
+      - {x: 155, y: 2.0000293}
       - {x: 155.00003, y: 5}
       - {x: 158, y: 4.9999704}
       - {x: 158.00003, y: 3}
@@ -46821,6 +46831,10 @@ PrefabInstance:
     - target: {fileID: 4485178903742297876, guid: 8c9dbba16ab7945fc82c8579599cf1ca, type: 3}
       propertyPath: m_Name
       value: RespawnLamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485178903742297876, guid: 8c9dbba16ab7945fc82c8579599cf1ca, type: 3}
+      propertyPath: m_TagString
+      value: StartLamp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

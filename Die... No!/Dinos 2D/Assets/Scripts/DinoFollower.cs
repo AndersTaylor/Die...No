@@ -37,7 +37,7 @@ public class DinoFollower : MonoBehaviour
                 rb.velocity = new Vector2(-speed, rb.velocity.y);
 
             //teleport
-            if (Vector2.Distance(target.position, transform.position) > 10)
+            if (Vector2.Distance(target.position, transform.position) > 8)
             {
                 transform.position = target.position;
             }

@@ -12,6 +12,7 @@ TagManager:
   - GuyImage
   - Dino
   - DinoImage
+  - StartLamp
   layers:
   - Default
   - TransparentFX
