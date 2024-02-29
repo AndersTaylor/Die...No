@@ -11,6 +11,7 @@ TagManager:
   - MushImage
   - GuyImage
   - Dino
+  - DinoImage
   layers:
   - Default
   - TransparentFX

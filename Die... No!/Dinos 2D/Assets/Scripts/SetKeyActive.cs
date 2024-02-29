@@ -21,6 +21,11 @@ public class SetKeyActive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (character == null)
+        {
+            character = GameObject.FindWithTag("Player");
+        }
+
         if (!guyDiscovered && character.transform.position.y >= 5.057f && character.transform.position.x >= 43f)
         {
             guyDiscovered = true;
