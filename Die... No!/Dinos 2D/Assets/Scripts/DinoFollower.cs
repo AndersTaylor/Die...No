@@ -8,6 +8,7 @@ public class DinoFollower : MonoBehaviour
 {
     public float speed = 1;
 
+    private Animator animator;
     private GameObject player;
     private Transform target;
     private Rigidbody2D rb;
@@ -17,6 +18,7 @@ public class DinoFollower : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
         target = player.transform;
         rb = GetComponent<Rigidbody2D>();
     }
@@ -28,14 +30,19 @@ public class DinoFollower : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
             target = player.transform;
         }
-        
+
         if (!isSitting && shouldMove)
         {
             if (target.position.x > transform.position.x)
+            {
+                animator.SetBool("IsMoving", true);
                 rb.velocity = new Vector2(speed, rb.velocity.y);
+            }
             else if (target.position.x < transform.position.x)
+            {
+                animator.SetBool("IsMoving", true);
                 rb.velocity = new Vector2(-speed, rb.velocity.y);
-
+            }
             //teleport
             if (Vector2.Distance(target.position, transform.position) > 10)
             {
@@ -43,7 +50,8 @@ public class DinoFollower : MonoBehaviour
             }
         }
         else
-        {
+        {   
+            animator.SetBool("IsMoving", false);
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
 

@@ -176,7 +176,11 @@ Animator:
   m_GameObject: {fileID: 8270347600963155816}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
+<<<<<<< HEAD
   m_Controller: {fileID: 9100000, guid: adebaa700b9054868a719d57274e754b, type: 2}
+=======
+  m_Controller: {fileID: 9100000, guid: 261a1cc6d7befd1409d6f2fda602d111, type: 2}
+>>>>>>> b7b2231 (Running dino)
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
