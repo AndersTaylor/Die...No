@@ -1730,7 +1730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7443202691347688724, guid: 68fafc4299c0fb345b7d49a54a889f9f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.7086406
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 7443202691347688724, guid: 68fafc4299c0fb345b7d49a54a889f9f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37489,7 +37489,10 @@ MonoBehaviour:
   - I believe we are looking for my red friend in this world, and just like me, they
     require a key to be freed.
   - Let the journey begin!
-  textComponent: {fileID: 0}
+  - You found my friend, but they look very unstable! I will stay and hold them here,
+    you go find the key.
+  textComponent: {fileID: 1377554250}
+  button: {fileID: 1095149571}
 --- !u!114 &1377554250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38117,7 +38120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5766032974452682097, guid: 997a6033985dc469194cddac94634dec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.1
+      value: 12.23
       objectReference: {fileID: 0}
     - target: {fileID: 5766032974452682097, guid: 997a6033985dc469194cddac94634dec, type: 3}
       propertyPath: m_LocalPosition.z
@@ -46715,6 +46718,10 @@ PrefabInstance:
     - target: {fileID: 4485178903742297876, guid: 8c9dbba16ab7945fc82c8579599cf1ca, type: 3}
       propertyPath: m_Name
       value: RespawnLamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485178903742297876, guid: 8c9dbba16ab7945fc82c8579599cf1ca, type: 3}
+      propertyPath: m_TagString
+      value: StartLamp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
