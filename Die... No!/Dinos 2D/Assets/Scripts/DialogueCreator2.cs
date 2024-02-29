@@ -36,6 +36,7 @@ public class DialogueCreater2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ShowNextLine();
+            
         }
 
 
