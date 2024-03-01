@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class PlayerController : MonoBehaviour
     
     public bool goingUp;
 
-    public ParticleSystem dust;
+    public ParticleSystem runDust;
+    public ParticleSystem jumpDust;
     public AudioClip jumpSound;
     private AudioSource audioSource;
 
@@ -31,6 +33,8 @@ public class PlayerController : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = jumpSound;
+        
+        runDust.Play();
     }
 	
     private void Update() 
@@ -41,26 +45,27 @@ public class PlayerController : MonoBehaviour
 
     private void Jump(float _jumpForce)
     {
-        CreateDust();
         PlayJumpSound();
         rb.AddForce(Vector2.up * _jumpForce);
         isGrounded = false;
-        //Debug.Log("jump");
+        
+        //AT jump particles
+        CreateJumpDust();
     }
 
     private void PlayerInputsAndMovement()
     {
+        //AT Player Movement
         float h = Input.GetAxisRaw("Horizontal");
-        if((h > 0 && !facingRight) || (h < 0 && facingRight)) { Flip(); }
+        if((h > 0 && !facingRight) || (h < 0 && facingRight)) { Flip();}
 
-        //AT Give more movement control in the air?
+        //AT Give more movement control in the air
         rb.velocity = isGrounded ? new Vector2(h * speed, rb.velocity.y) : new Vector2(h * speed * 1.2f, rb.velocity.y);
-        
         
         animator.SetBool("NotMoving", Mathf.Approximately(h, 0));
 
         //AT Hardcode jump to space key. Could change.
-        if(Input.GetKeyDown(KeyCode.Space) && (isGrounded || Input.GetKey(KeyCode.LeftShift))) 
+        if(Input.GetKeyDown(KeyCode.Space) && (isGrounded || Input.GetKey(KeyCode.LeftShift)))
         {
             animator.SetTrigger("Jump");
             Jump(jumpForce);
@@ -71,7 +76,6 @@ public class PlayerController : MonoBehaviour
         if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
             rb.gravityScale = lowJumpMultiplierFloat;
-            //rb.velocity += Vector2.down * ((lowJumpMultiplierFloat - 1) * Time.deltaTime);
         }
         else if (rb.velocity.y < 0 && goingUp) 
         {
@@ -82,6 +86,9 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = gravityScale;
         }
+        
+        //AT Manage run particles
+        CreateRunDust();
     }
 
     private bool CheckIsGrounded()
@@ -112,7 +119,6 @@ public class PlayerController : MonoBehaviour
     }
 
     void Flip() {
-        CreateDust();
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
@@ -126,10 +132,25 @@ public class PlayerController : MonoBehaviour
         goingUp = false;
     }
 
-    void CreateDust()
+    void CreateRunDust()
     {
-        dust.Play();
+        if (rb.velocity != Vector2.zero)
+        {
+            var dust = runDust.emission;
+            dust.enabled = true;
+        }
+        else
+        {
+            var dust = runDust.emission;
+            dust.enabled = false;
+        }
     }
+    
+    void CreateJumpDust()
+    {
+        jumpDust.Play();
+    }
+    
     void PlayJumpSound()
     {
         if (jumpSound != null && audioSource != null)
