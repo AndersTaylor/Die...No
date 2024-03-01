@@ -9,8 +9,8 @@ public class MusicPlayer : MonoBehaviour
 {
     public AudioClip[] songs;
 
-    public AudioSource songPlayer;
-    public AudioClip playingSong;
+    private AudioSource songPlayer;
+    private AudioClip playingSong;
     private int index;
 
     void Start()
@@ -23,12 +23,8 @@ public class MusicPlayer : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-            songPlayer.time = playingSong.length - 1;
-
         if (!songPlayer.isPlaying)
         {
-            //Debug.Log(index);
             SetAndPlay();
         }
     }
