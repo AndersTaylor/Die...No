@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-
-    public float speed = 1;
+    public float speed = 4;
     public GameObject player;
     private GameObject corruptDino;
     private GameController gc;
@@ -15,20 +14,31 @@ public class PickUp : MonoBehaviour
     public bool guyDiscovered = false;
     private bool shouldMove;
     public bool isSelected;
+    public GameObject goldKey;
+    private Animator goldKeyAnimator;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         corruptDino = GameObject.FindGameObjectWithTag("Corrupted");
         target = player.transform;
-        rb = GetComponent<Rigidbody2D>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
         shouldMove = false;
         isSelected = false;
         gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        if (goldKey != null)
+        {
+            goldKeyAnimator = goldKey.GetComponent<Animator>();
+        }
     }
 
     void Update()
     {
+        if(!rb)
+        {
+            rb = gameObject.GetComponent<Rigidbody2D>();
+        }
+
         if (!player)
         {
             player = GameObject.FindGameObjectWithTag("Player");
@@ -42,7 +52,6 @@ public class PickUp : MonoBehaviour
 
         if (shouldMove)
         {
-            Debug.Log("Move!");
             if (target.position.x > transform.position.x)
             {
                 rb.velocity = new Vector2(speed, rb.velocity.y);
@@ -62,7 +71,19 @@ public class PickUp : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            if (rb == null) 
+            {
+                Debug.LogError("Rigidbody not found on the object.");
+            } else {
+            rb.velocity = new Vector2(0, 0);
+            }
+        }
+        if (goldKeyAnimator != null)
+        {
+            if (!isSelected && shouldMove)
+            {
+                goldKeyAnimator.SetBool("Selected", true);
+            }
         }
     }
 
@@ -84,6 +105,12 @@ public class PickUp : MonoBehaviour
         {
             gc.unlockCorrupted = true;
             target = corruptDino.transform;
+            if (goldKeyAnimator != null)
+            {
+                goldKeyAnimator.SetTrigger("Unlock");
+                gc.unlockCorrupted = false;
+                gc.pickedUpKey = false;
+            }
         }
     }
 
