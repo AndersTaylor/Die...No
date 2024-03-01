@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
     private bool CheckIsGrounded()
     {
-        RaycastHit2D[] hits = new RaycastHit2D[2];
+        RaycastHit2D[] hits = new RaycastHit2D[3];
         
         //AT Hardcoded distance down to check for ground. Will be different depending on character sprite
         //AT Send out two rays at each end of the character and one in the middle. The rays are intentionally offset downwards and to the sides for forgiving jumps
