@@ -89,12 +89,14 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D[] hits = new RaycastHit2D[2];
         
         //AT Hardcoded distance down to check for ground. Will be different depending on character sprite
-        //AT Send out two rays at each end of the character. The rays are intentionally offset downwards and to the sides for forgiving jumps
-        RaycastHit2D hitR = Physics2D.Raycast((transform.position + Vector3.down * 1.5f + Vector3.right * 0.7f), Vector2.down, 0.1f);
+        //AT Send out two rays at each end of the character and one in the middle. The rays are intentionally offset downwards and to the sides for forgiving jumps
+        RaycastHit2D hitR = Physics2D.Raycast((transform.position + Vector3.down * 1.5f + Vector3.right * 0.6f), Vector2.down, 0.1f);
         RaycastHit2D hitL = Physics2D.Raycast((transform.position + Vector3.down * 1.5f + Vector3.left * 0.4f), Vector2.down, 0.1f);
+        RaycastHit2D hitM = Physics2D.Raycast((transform.position + Vector3.down * 1.5f), Vector2.down, 0.1f);
 
         hits[0] = hitR;
         hits[1] = hitL;
+        hits[2] = hitM;
         
         for (int i = 0; i < hits.Length; i++)
         {
@@ -136,4 +138,3 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
-
