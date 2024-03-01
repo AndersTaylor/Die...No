@@ -57,8 +57,24 @@ public class isCorrupted : MonoBehaviour
 
     //AT delete l8r
     IEnumerator TempLoadEnd()
-    {
-        yield return new WaitForSeconds(5);
-        SceneManager.LoadScene("EndScene");
-    }
+   {
+       yield return new WaitForSeconds(5);
+
+
+       Scene currentScene = SceneManager.GetActiveScene();
+       string sceneName = currentScene.name;
+
+
+       if (sceneName == "Level 1")
+       {
+           SceneManager.LoadScene("Level 2");
+       } 
+       else if (sceneName == "Level 2")
+       {
+           SceneManager.LoadScene("Level 3");
+       } else {
+           SceneManager.LoadScene("EndScene");
+       }
+   }
+
 }
