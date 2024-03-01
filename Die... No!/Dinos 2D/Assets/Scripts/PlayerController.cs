@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    Still() {
+    public void Still() {
         animator.SetBool("NotMoving", true);
     }
 }
