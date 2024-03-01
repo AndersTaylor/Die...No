@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -39,7 +41,12 @@ public class PlayerController : MonoBehaviour
 	
     private void Update() 
     {
-		PlayerInputsAndMovement();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // Load the main menu scene
+            SceneManager.LoadScene("StartScreenScene");
+        }
+        PlayerInputsAndMovement();
         CheckIsGrounded();
     }
 

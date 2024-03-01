@@ -81,7 +81,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 100
   m_Sprite: {fileID: -2041991642, guid: 35303f28d85ab4ed1b07a2d9461173dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -183,8 +183,8 @@ MonoBehaviour:
   facingRight: 1
   lowJumpMultiplierFloat: 25
   goingUp: 0
-  runDust: {fileID: 0}
-  jumpDust: {fileID: 0}
+  runDust: {fileID: 1496282440343140516}
+  jumpDust: {fileID: 8224570793572699581}
   jumpSound: {fileID: 8300000, guid: 38cb0b7b1200846389ed778696088881, type: 3}
 --- !u!114 &-5056967138413218047
 MonoBehaviour:
@@ -516,6 +516,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9182485252202989775, guid: 2d977c398fdc59b479fc7c3a4ff4cf88, type: 3}
   m_PrefabInstance: {fileID: 4035539311222159053}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &8224570793572699581 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5341997107613105008, guid: 2d977c398fdc59b479fc7c3a4ff4cf88, type: 3}
+  m_PrefabInstance: {fileID: 4035539311222159053}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6836828049657283540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -581,6 +586,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d977c398fdc59b479fc7c3a4ff4cf88, type: 3}
+--- !u!198 &1496282440343140516 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5341997107613105008, guid: 2d977c398fdc59b479fc7c3a4ff4cf88, type: 3}
+  m_PrefabInstance: {fileID: 6836828049657283540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2418423434048260891 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9182485252202989775, guid: 2d977c398fdc59b479fc7c3a4ff4cf88, type: 3}
