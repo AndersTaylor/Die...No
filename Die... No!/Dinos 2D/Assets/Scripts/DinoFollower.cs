@@ -13,7 +13,7 @@ public class DinoFollower : MonoBehaviour
     private Transform target;
     private Rigidbody2D rb;
     private bool isSitting = false;
-    private  bool shouldMove;
+    private bool shouldMove;
 
     //at the end, shouldn't move
     private bool endReached = false;
@@ -28,12 +28,20 @@ public class DinoFollower : MonoBehaviour
 
     void Update()
     {
+        FollowPlayer();
+    }
+
+    private void FollowPlayer()
+    {
         if (!endReached)
         {
-            if (!player)
+            //AT Reset if player dies
+            if (!player || transform.position.y <= -25)
             {
                 player = GameObject.FindGameObjectWithTag("Player");
                 target = player.transform;
+                isSitting = false;
+                shouldMove = true;
             }
 
             if (!isSitting && shouldMove)
@@ -51,7 +59,7 @@ public class DinoFollower : MonoBehaviour
                 //teleport
                 if (Vector2.Distance(target.position, transform.position) > 6)
                 {
-                    transform.position = target.position + Vector3.left * 1;
+                    transform.position = target.position + Vector3.left;
                 }
             }
             else

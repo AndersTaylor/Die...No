@@ -19,6 +19,7 @@ public class DialogueCreater2 : MonoBehaviour
     private Collider2D buttonCollider;
     private bool buttonClicked;
     private ButtonBehavior buttonScript;
+    private PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +30,10 @@ public class DialogueCreater2 : MonoBehaviour
         character = GameObject.FindWithTag("Player");
         dino = GameObject.FindWithTag("Dino");
         buttonScript = button.GetComponent<ButtonBehavior>();
+        playerController = character.GetComponent<PlayerController>();
         
-        character.GetComponent<PlayerController>().Still();
-        character.GetComponent<PlayerController>().enabled = false;
+        playerController.Still();
+        playerController.enabled = false;
 
         characterRB = character.GetComponent<Rigidbody2D>();
 
@@ -44,6 +46,7 @@ public class DialogueCreater2 : MonoBehaviour
         if (character == null)
         {
             character = GameObject.FindWithTag("Player");
+            playerController = character.GetComponent<PlayerController>();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -64,26 +67,15 @@ public class DialogueCreater2 : MonoBehaviour
             ShowNextLineEnd();
             dialogueImage.SetActive(true);
             dinoImage.SetActive(true);
-            character.GetComponent<PlayerController>().Still();
-            character.GetComponent<PlayerController>().enabled = false;
+            
+            playerController.Still();
+            playerController.enabled = false;
             characterRB.velocity = Vector2.zero;
+            
             dino.GetComponent<DinoFollower>().Stay();
+            dino.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
-
-    //void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.CompareTag("Dino"))
-    //    {
-    //        buttonClicked = true;
-    //        ShowNextLineEnd();
-    //        dialogueImage.SetActive(true);
-    //        character.GetComponent<PlayerController>().enabled = false;
-    //        characterRB.velocity = Vector2.zero;
-    //        dinoImage.SetActive(true);
-    //        dino.GetComponent<DinoFollower>().enabled = false;
-    //    }
-    //}
 
     void ShowNextLine()
     {
@@ -95,7 +87,7 @@ public class DialogueCreater2 : MonoBehaviour
 
         else
         {
-            character.GetComponent<PlayerController>().enabled = true;
+            playerController.enabled = true;
             textComponent.text = "";
             dialogueImage.SetActive(false);
             dinoImage.SetActive(false);
@@ -114,7 +106,7 @@ public class DialogueCreater2 : MonoBehaviour
         {
             textComponent.text = "";
             dialogueImage.SetActive(false);
-            character.GetComponent<PlayerController>().enabled = true;
+            playerController.enabled = true;
             dinoImage.SetActive(false);
         }
     }
