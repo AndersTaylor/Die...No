@@ -137,4 +137,8 @@ public class PlayerController : MonoBehaviour
             audioSource.PlayOneShot(jumpSound);
         }
     }
+
+    Still() {
+        animator.SetBool("NotMoving", true);
+    }
 }

@@ -29,7 +29,8 @@ public class DialogueCreater2 : MonoBehaviour
         character = GameObject.FindWithTag("Player");
         dino = GameObject.FindWithTag("Dino");
         buttonScript = button.GetComponent<ButtonBehavior>();
-
+        
+        character.GetComponent<PlayerController>().Still();
         character.GetComponent<PlayerController>().enabled = false;
 
         characterRB = character.GetComponent<Rigidbody2D>();
@@ -63,6 +64,7 @@ public class DialogueCreater2 : MonoBehaviour
             ShowNextLineEnd();
             dialogueImage.SetActive(true);
             dinoImage.SetActive(true);
+            character.GetComponent<PlayerController>().Still();
             character.GetComponent<PlayerController>().enabled = false;
             characterRB.velocity = Vector2.zero;
             dino.GetComponent<DinoFollower>().Stay();
