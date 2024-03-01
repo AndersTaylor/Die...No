@@ -51,7 +51,7 @@ public class DinoFollower : MonoBehaviour
                 //teleport
                 if (Vector2.Distance(target.position, transform.position) > 6)
                 {
-                    transform.position = target.position;
+                    transform.position = target.position + Vector3.left * 2;
                 }
             }
             else
