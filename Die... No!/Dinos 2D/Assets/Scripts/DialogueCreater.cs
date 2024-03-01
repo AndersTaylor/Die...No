@@ -30,6 +30,7 @@ public class DialogueCreater : MonoBehaviour
         guyImage = GameObject.FindWithTag("GuyImage");
         character = GameObject.FindWithTag("Player");
 
+        character.GetComponent<PlayerController>().Still();
         character.GetComponent<PlayerController>().enabled = false;
         characterRB = character.GetComponent<Rigidbody2D>();
         guyImage.SetActive(false);
@@ -56,6 +57,7 @@ public class DialogueCreater : MonoBehaviour
             guyDiscovered = true;
             ShowNextLineEnd();
             dialogueImage.SetActive(true);
+            character.GetComponent<PlayerController>().Still();
             character.GetComponent<PlayerController>().enabled = false;
             characterRB.velocity = Vector2.zero;
             guyImage.SetActive(true);
