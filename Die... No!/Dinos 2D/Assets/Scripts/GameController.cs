@@ -5,4 +5,5 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public bool pickedUpKey = false;
+    public bool unlockCorrupted = false;
 }

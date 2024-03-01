@@ -13,6 +13,7 @@ TagManager:
   - Dino
   - DinoImage
   - StartLamp
+  - Corrupted
   layers:
   - Default
   - TransparentFX

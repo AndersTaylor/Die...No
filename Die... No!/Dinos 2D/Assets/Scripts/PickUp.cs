@@ -11,7 +11,10 @@ public class PickUp : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().pickedUpKey = true;
-            Destroy(gameObject);
+        }
+        if (other.gameObject.CompareTag("Corrupted"))
+        {
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().unlockCorrupted = true;
         }
     }
 }

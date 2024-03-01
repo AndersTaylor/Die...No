@@ -25,7 +25,7 @@ public class isCorrupted : MonoBehaviour
     {
         //AT This is a crappy piece of code to be refactored for example in the GameController script 
         // to set it once instead of checking every frame.
-        hasKey = gc.pickedUpKey;
+        hasKey = gc.unlockCorrupted;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
