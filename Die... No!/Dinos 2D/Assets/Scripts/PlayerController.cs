@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("NotMoving", Mathf.Approximately(h, 0));
 
         //AT Hardcode jump to space key. Could change.
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded) 
+        if(Input.GetKeyDown(KeyCode.Space) && (isGrounded || Input.GetKey(KeyCode.LeftShift))) 
         {
             animator.SetTrigger("Jump");
             Jump(jumpForce);
