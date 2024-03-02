@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
 	
     private void Update() 
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // Load the main menu scene
+            SceneManager.LoadScene("StartScreenScene");
+        }
         PlayerInputsAndMovement();
         CheckIsGrounded();
     }
