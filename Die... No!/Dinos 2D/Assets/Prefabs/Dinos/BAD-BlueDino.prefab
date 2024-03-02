@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8521445493054339798}
   - component: {fileID: 6658358298207277782}
   m_Layer: 0
-  m_Name: BlueDino
+  m_Name: BAD-BlueDino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

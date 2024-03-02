@@ -12,8 +12,10 @@ public class DinoFollower : MonoBehaviour
     private GameObject player;
     private Transform target;
     private Rigidbody2D rb;
+    private AudioSource audio;
     private bool isSitting = false;
     private bool shouldMove;
+    private ParticleSystem poofParticles;
 
     //at the end, shouldn't move
     private bool endReached = false;
@@ -24,6 +26,8 @@ public class DinoFollower : MonoBehaviour
         animator = GetComponent<Animator>();
         target = player.transform;
         rb = GetComponent<Rigidbody2D>();
+        audio = GetComponent<AudioSource>();
+        poofParticles = GetComponentInChildren<ParticleSystem>();
     }
 
     void Update()
@@ -60,6 +64,8 @@ public class DinoFollower : MonoBehaviour
                 if (Vector2.Distance(target.position, transform.position) > 6)
                 {
                     transform.position = target.position + Vector3.left;
+                    audio.Play();
+                    poofParticles.Play();
                 }
             }
             else

@@ -47,6 +47,7 @@ public class DialogueCreater2 : MonoBehaviour
         {
             character = GameObject.FindWithTag("Player");
             playerController = character.GetComponent<PlayerController>();
+            characterRB = character.GetComponent<Rigidbody2D>();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

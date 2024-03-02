@@ -14,7 +14,7 @@ public class PlayerDeath : MonoBehaviour
     void Start()
     {
         startLamp = GameObject.FindGameObjectWithTag("StartLamp");
-        respawnPosition = startLamp.transform.position;
+        if(startLamp) respawnPosition = startLamp.transform.position;
     }
 
     // Update is called once per frame
