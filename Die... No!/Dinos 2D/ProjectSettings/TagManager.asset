@@ -13,6 +13,8 @@ TagManager:
   - Dino
   - DinoImage
   - StartLamp
+  - SceneTransition
+  - EscMenu
   layers:
   - Default
   - TransparentFX

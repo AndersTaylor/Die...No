@@ -11,7 +11,7 @@ public class PickUp : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().pickedUpKey = true;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

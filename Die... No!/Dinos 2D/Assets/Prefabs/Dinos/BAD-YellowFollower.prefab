@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 2715757764384971542}
   - component: {fileID: 6550515227093314935}
   m_Layer: 0
-  m_Name: YellowFollower
+  m_Name: BAD-YellowFollower
   m_TagString: Dino
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -28,7 +28,7 @@ public class ButtonBehavior : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player")|| other.CompareTag("Dino"))
+        if (other.CompareTag("Player") && !dinoPressed || other.CompareTag("Dino") && dinoPressed)
         {
 
             sr.sprite = defaultSprite; 
