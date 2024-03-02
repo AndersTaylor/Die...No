@@ -16,7 +16,7 @@ public class PickUp : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        //gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         target = player.transform;
         shouldMove = false;
     }
@@ -68,8 +68,9 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.gameObject.CompareTag("Player")) return;
-        //gc.pickedUpKey = true;
+        if (!other.gameObject.CompareTag("Player") || gc.pickedUpKey) return;
+        GetComponent<AudioSource>().Play();
+        gc.pickedUpKey = true;
         shouldMove = true;
     }
 }

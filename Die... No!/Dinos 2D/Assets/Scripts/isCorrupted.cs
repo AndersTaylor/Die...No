@@ -23,6 +23,7 @@ public class isCorrupted : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log(gc.pickedUpKey);
             if (gc.pickedUpKey && !hasBeenPurified)
             {
                 StartCoroutine(Purified());
