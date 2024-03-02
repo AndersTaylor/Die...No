@@ -62,7 +62,6 @@ public class DialogueCreater : MonoBehaviour
             characterRB.velocity = Vector2.zero;
             guyImage.SetActive(true);
             mushImage.SetActive(false);
-            //characterRB.angularVelocity = Vector2.zero;
         }
 
 
@@ -102,5 +101,5 @@ public class DialogueCreater : MonoBehaviour
             guyImage.SetActive(false);
         }
     }
-
+    
 }
