@@ -24,6 +24,12 @@ public class PickUp : MonoBehaviour
     Vector3 vel = Vector3.zero;
     private void Update()
     {
+        if (!player)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            target = player.transform;
+        }
+        
         if (shouldMove)
             transform.position = Vector3.SmoothDamp(transform.position, target.position, ref vel, damp);
     }
