@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RespawnManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     private PlayerDeath deathScript;
+    [HideInInspector] public Vector3 respawnPos;
 
     void Start()
     {
@@ -16,7 +16,8 @@ public class RespawnManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            deathScript.UpdateLastCheckpoint(transform.position);
+            respawnPos = transform.position;
+            deathScript.UpdateLastCheckpoint(respawnPos);
         }
     }
 }

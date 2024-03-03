@@ -7,13 +7,16 @@ public class PlayerDeath : MonoBehaviour
     public float respawnYThreshold = -20f;
 
     private GameObject startLamp;
-
     private Vector3 respawnPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         startLamp = GameObject.FindGameObjectWithTag("StartLamp");
+        
+        //AT In the future, we should not have multiple respawn managers running around the scene and instead
+        // attach all respawning logic to the game manager, the checkpoints updating the one manager where to
+        // respawn the player.
         if(startLamp) respawnPosition = startLamp.transform.position;
     }
 

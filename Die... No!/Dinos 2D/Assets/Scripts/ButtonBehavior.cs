@@ -8,12 +8,14 @@ public class ButtonBehavior : MonoBehaviour
     private SpriteRenderer sr; 
     private bool isPressed;
     private bool dinoPressed;
+    
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
     }
 
+    int dinosEnter = 0;
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Dino"))
@@ -23,20 +25,31 @@ public class ButtonBehavior : MonoBehaviour
         }
 
         if (other.CompareTag("Dino"))
+        {
             dinoPressed = true;
+            dinosEnter++;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !dinoPressed || other.CompareTag("Dino") && dinoPressed)
+        if (other.CompareTag("Dino"))
         {
-
+            dinosEnter--;
+        }
+        
+        if (other.CompareTag("Player") && !dinoPressed)
+        {
             sr.sprite = defaultSprite; 
             isPressed = false; 
         }
 
-        if (other.CompareTag("Dino"))
+        if (other.CompareTag("Dino") && dinoPressed && dinosEnter <= 0)
+        {
             dinoPressed = false;
+            sr.sprite = defaultSprite; 
+            isPressed = false; 
+        }
     }
 
     public bool GetPressed
