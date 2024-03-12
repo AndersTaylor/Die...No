@@ -26,10 +26,11 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpSound;
     private AudioSource audioSource;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        Debug.Log(animator);
 
         gravityScale = rb.gravityScale;
 
@@ -77,7 +78,7 @@ public class PlayerController : MonoBehaviour
         //AT control jump height by length of time jump button held
         if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
-            rb.gravityScale = lowJumpMultiplierFloat;
+            //rb.gravityScale = lowJumpMultiplierFloat;
         }
         else if (rb.velocity.y < 0 && goingUp) 
         {

@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "EndScene")
         {
+            GetComponent<AudioSource>().Play();
             sceneTransition.GetComponent<Animator>().SetBool("EndScene", true);
             yield return new WaitForSeconds(1);
             SceneManager.LoadScene("Level 1");
@@ -39,6 +40,7 @@ public class GameController : MonoBehaviour
         else
         {
             yield return new WaitForSeconds(3);
+            GetComponent<AudioSource>().Play();
             sceneTransition.GetComponent<Animator>().SetBool("EndScene", true);
             yield return new WaitForSeconds(1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -48,6 +50,7 @@ public class GameController : MonoBehaviour
     [HideInInspector] public string sceneName;
     public IEnumerator LoadSceneName()
     {
+        GetComponent<AudioSource>().Play();
         sceneTransition.GetComponent<Animator>().SetBool("EndScene", true);
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(sceneName);
